@@ -12,9 +12,9 @@ io.on('connection', function(socket){
     console.log("New User Connected!");
 
     //--->User Disconnection Status
-    // socket.on('disconnect', function(){
-    //     console.log("User disconnected!")
-    // })
+    socket.on('disconnect', function(){
+        console.log("User disconnected!")
+    })
 
     // Data Send Server to Client (Data through ----> )
     setTimeout(function(){

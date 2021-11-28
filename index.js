@@ -1,12 +1,19 @@
 const express = require('express')
 const app = express();
-const http = require('http')
+const http = require('http');
 const expressServer = http.createServer(app);
 
 // Socket Configure
 const {Server} = require('socket.io');
- const io = new Server(expressServer);   //made socket server with respect to expressServer
+const io = new Server(expressServer);   //made socket server with respect to expressServer
 
+io.on('connection', function(socket){
+    console.log("New User Connected!");
+
+    socket.on('disconnect', function(){
+        console.log("User disconnected!")
+    })
+})
 
 app.get('/', function(req, res){
     res.sendFile(__dirname+"/index.html")

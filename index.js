@@ -7,6 +7,7 @@ const expressServer = http.createServer(app);
 const {Server} = require('socket.io');
 const io = new Server(expressServer);   //made socket server with respect to expressServer
 
+// User Connection and Disconnected Status
 io.on('connection', function(socket){
     console.log("New User Connected!");
 

@@ -16,14 +16,21 @@ io.on('connection', function(socket){
         console.log("User disconnected!")
     })
 
-    // Data Send Server to Client (Data through ----> )
-    setTimeout(function(){
-        socket.send("Data sending flow status from server to client(Server --> Client)!")
-    }, 10000)
+    //--->Data Send Server to Client (Data through ----> )
+    // setTimeout(function(){
+    //     socket.send("Data sending flow status from server to client(Server --> Client)!")
+    // }, 10000)
+
+    // ---> Callback functions working server to client(Continuously getting data from server)
+    setInterval(function(){
+        let d=new Date();
+        let t=d.getTime();
+        socket.send(t);
+    },1000)
 
 })
 
-app.get('/', function(req, res){
+app.get('/', function(req, res){ 
     res.sendFile(__dirname+"/index.html")
 })
 
